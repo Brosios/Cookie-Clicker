@@ -1,6 +1,6 @@
 # Cookie-Clicker
 Broswer Game
-Step 1: base structure
+<h2>Step 1: base structure</h2>
 
 Write the base structure for the project in HTML, CSS and JavaScript. Within the HTML, put a click button which will increment a counter and a label initialised at 0 to display said counter.
 
