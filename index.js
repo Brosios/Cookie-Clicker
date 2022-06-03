@@ -1,46 +1,34 @@
-//initial number of cookies    
-var num = 0;
+(() => {
 
-window.onload = function () {
-        var name = prompt("What is your name");
-        
-        var space = document.getElementById("space");
-        
-        space.innerHTML = name + "'s Cookie Clicker";
-}
+    var totalNumberOfCookies = 0
+    var autoAddAmount = 1
+    var priceOptionOne = 20
+    var looop = window.setInterval(autoAdd, 1000)
 
-var cookie = document.getElementById("cookie");
+    document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+    document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
 
-function cookieClick() { 
-    num += 1;
-
-    var numbers = document.getElementById("numbers");
-    
-    //upgrade level for printing
-    var upgradeLevel = document.getElementById("upgradeLevel");
-    
-    numbers.innerHTML = num;      
-    //automatic Granny upgrade to 2x
-    if(num >= 30 ){
-        num += 2;
-        upgradeLevel.innerHTML = "Granny Level";
+    function autoAdd() {
+        totalNumberOfCookies += autoAddAmount
+        document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     }
 
-    //automatic factory upgrade to 10x
-    if(num >= 500) {
-        num += 10;
-        upgradeLevel.innerHTML = "Factory Level";
-    }
+    document.getElementById("cookie").addEventListener("click", () => {
+        totalNumberOfCookies++
+        document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+    })
 
-    //automatic plant upgrade to 30x
-    if(num >= 1000) {
-        num += 30;
-        upgradeLevel.innerHTML = "Plant Level";
-    }
+    document.getElementById("optionone").addEventListener("click", () => {
+        if(totalNumberOfCookies >= priceOptionOne) {
+            autoAddAmount++
+            totalNumberOfCookies -= priceOptionOne
+            priceOptionOne = Math.floor(priceOptionOne * 1.3)
+            document.getElementById('price').innerHTML = `${priceOptionOne} Cookies`
+            document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
+            document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+        }
+    })
 
-    //automatic super factory upgrade to 1000x
-    if(num >= 100000) {
-        num += 1000;
-        upgradeLevel.innerHTML = "Super-Plant Level";
-    }
-}
+
+
+})();
