@@ -52,3 +52,8 @@ Make it so that, if the player doesn’t have the points to purchase a multiplie
 
 Your cookie clicker must be pretty, make it look good with CSS or some extra JavaScript.
 
+<h2>Software used</h2>
+<ul>
+  <li>FireAlpaca<li>
+  <p>cookie design software</p>
+  
