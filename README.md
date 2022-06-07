@@ -1,4 +1,10 @@
 # Cookie-Clicker
+<h1>members</h1>
+<ul>
+  <li>Asma Righi</li>
+  <li>Arthur Pluym</li>
+  <li>Omar Maad</li>
+  <li>Mehdi Ouannassi</li>
 <h1>Broswer Game</h1>
 <h2>Step 1: base structure</h2>
 
