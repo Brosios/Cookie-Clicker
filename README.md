@@ -54,6 +54,7 @@ Your cookie clicker must be pretty, make it look good with CSS or some extra Jav
 
 <h2>Software used</h2>
 <ul>
-  <li>FireAlpaca<li>
+  <li>FireAlpaca</li>
   <p>cookie design software</p>
+ </ul>
   
