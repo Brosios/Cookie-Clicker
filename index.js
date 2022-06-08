@@ -42,13 +42,12 @@
     var autoAddAmount = 0
     var clickAddAmount = 1
     var crackingAmount = 0
-    var priceOptionOne = 20
     var priceUpgrade = 30
     var priceAutoClick = 500
     var priceBoost = 10000
     var loopAutoAdd = window.setInterval(autoAdd, 1000)
     var loopICanBuy = window.setInterval(iCanBuy, 10)
-    var loopSave = window.setInterval(saveAll, 10)
+    var loopSave = window.setInterval(saveAll, 10000)
 
 // ------------------------------------------------------------
 
@@ -56,6 +55,10 @@
     document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
 // ------------------------------------------------------------
+
+window.onload = function() {
+    confirm('Do you wanna start where you left off?') ? load() : null
+  };
 
 //
     function autoAdd() {
@@ -76,9 +79,7 @@
     }
 
     function load() {
-        console.log('I am loaded')
         totalNumberOfCookies = parseInt(localStorage.getItem('totalNumberOfCookies'))
-        console.log(parseInt(localStorage.getItem('totalNumberOfCookies')))
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     }
 
@@ -103,6 +104,10 @@
 //
     document.getElementById("optionone").addEventListener("click", () => {
         load()
+    })
+
+    document.getElementById('save').addEventListener('click', () => {
+        saveAll()
     })
 
     document.getElementById("up-btn").addEventListener("click", () => {
@@ -139,6 +144,8 @@
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
     })
+
+
 
 })();
 // ------------------------------------------------------------
