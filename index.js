@@ -1,18 +1,23 @@
 (() => {
 
     const galleryCookies = [
-        'pictures/cookie1.jpg',
-        'pictures/cookie2.jpg',
-        'pictures/cookie3.jpg',
-        'pictures/cookie4.jpg',
-        'pictures/cookie5.jpg',
-        'pictures/cookie6.jpg',
-        'pictures/cookie7.jpg',
-        'pictures/cookie8.jpg',
-        'pictures/cookie9.jpg',
-        'pictures/cookie10.jpg',
-        'pictures/cookie11.jpg'
+        './img/cook1.png',
+        './img/cook2.png',
+        './img/cook3.png',
+        './img/cook4.png',
+        './img/cook5.png',
+        './img/cook6.png',
+        './img/cook7.png',
+        './img/cook8.png',
+        './img/cook9.png',
+        './img/cook10.png',
+        './img/cook11.png',
+        './img/cook12.png',
+        './img/cook13.png',
+        './img/cook14.png'
     ]
+// ------------------------------------------------------------
+
     const breakPointsGallery = [
         1,
         2,
@@ -24,8 +29,14 @@
         8,
         9,
         10,
-        11
+        11,
+        12,
+        13,
+        14
     ]
+// ------------------------------------------------------------
+
+// Variables
     var galleryIndex = 0
     var totalNumberOfCookies = 0
     var autoAddAmount = 1
@@ -33,14 +44,21 @@
     var priceOptionOne = 20
     var looop = window.setInterval(autoAdd, 1000)
 
+// ------------------------------------------------------------
+
+// 
     document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
+// ------------------------------------------------------------
 
+//
     function autoAdd() {
         totalNumberOfCookies += autoAddAmount
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     }
+// ------------------------------------------------------------
 
+//
     document.getElementById("cookie").addEventListener("click", () => {
         totalNumberOfCookies++
         crackingAmount++
@@ -56,7 +74,9 @@
         
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     })
+// ------------------------------------------------------------
 
+//
     document.getElementById("optionone").addEventListener("click", () => {
         if(totalNumberOfCookies >= priceOptionOne) {
             autoAddAmount++
@@ -67,5 +87,5 @@
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
     })
-
 })();
+// ------------------------------------------------------------
