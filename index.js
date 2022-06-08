@@ -126,6 +126,7 @@
             priceAutoClick = Math.floor(priceAutoClick * 1.6)
             document.getElementById('price-auto').innerHTML = `${priceAutoClick}`
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+            document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
         }
     })
 
