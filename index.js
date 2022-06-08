@@ -42,13 +42,14 @@
     var autoAddAmount = 0
     var clickAddAmount = 1
     var crackingAmount = 0
-    var priceOptionOne = 20
+    var numberOfUpdates = 0
+    var numberOfAutoClick = 0
     var priceUpgrade = 30
     var priceAutoClick = 500
     var priceBoost = 10000
     var loopAutoAdd = window.setInterval(autoAdd, 1000)
     var loopICanBuy = window.setInterval(iCanBuy, 10)
-    var loopSave = window.setInterval(saveAll, 10)
+    var loopSave = window.setInterval(saveAll, 1000)
 
 // ------------------------------------------------------------
 
@@ -56,6 +57,10 @@
     document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
 // ------------------------------------------------------------
+
+window.onload = function() {
+    confirm('Do you wanna start where you left off?') ? load() : null
+  };
 
 //
     function autoAdd() {
@@ -73,19 +78,24 @@
 
     function saveAll() {
         localStorage.setItem('totalNumberOfCookies', JSON.stringify(totalNumberOfCookies))
+        localStorage.setItem('priceUpgrade', JSON.stringify(priceUpgrade))
+        localStorage.setItem('priceAutoClick', JSON.stringify(priceAutoClick))
+        localStorage.setItem('galleryIndex', JSON.stringify(galleryIndex))
     }
 
     function load() {
-        console.log('I am loaded')
         totalNumberOfCookies = parseInt(localStorage.getItem('totalNumberOfCookies'))
-        console.log(parseInt(localStorage.getItem('totalNumberOfCookies')))
+        priceUpgrade = parseInt(localStorage.getItem('priceUpgrade'))
+        priceAutoClick = parseInt(localStorage.getItem('priceAutoClick'))
+        galleryIndex = parseInt(localStorage.getItem('galleryIndex'))
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+        document.getElementById('price-up').innerHTML = `${priceUpgrade}`
+        document.getElementById('price-auto').innerHTML = `${priceAutoClick}`
+        document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])
+        
     }
 
-//
-    document.getElementById("cookie").addEventListener("click", () => {
-        totalNumberOfCookies += clickAddAmount
-        crackingAmount++
+    function crackingCookie() {
         if (crackingAmount == breakPointsGallery[galleryIndex]) {
             galleryIndex++
             document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])  
@@ -95,7 +105,13 @@
             crackingAmount = 0
             document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])
         }
-        
+    }
+
+//
+    document.getElementById("cookie").addEventListener("click", () => {
+        totalNumberOfCookies += clickAddAmount
+        crackingAmount++
+        crackingCookie()
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     })
 // ------------------------------------------------------------
@@ -103,6 +119,10 @@
 //
     document.getElementById("optionone").addEventListener("click", () => {
         load()
+    })
+
+    document.getElementById('save').addEventListener('click', () => {
+        saveAll()
     })
 
     document.getElementById("up-btn").addEventListener("click", () => {
@@ -134,11 +154,13 @@
         if(totalNumberOfCookies >= priceBoost) {
             clickAddAmount *= 2
             totalNumberOfCookies -= priceBoost
-            priceBoost = Math.floor(priceBoost * 2)
+            priceBoost = Math.floor(priceBoost * 1.5)
             document.getElementById('price-boost').innerHTML = `${priceBoost}`
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
     })
+
+
 
 })();
 // ------------------------------------------------------------
