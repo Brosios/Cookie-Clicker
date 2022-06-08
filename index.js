@@ -42,12 +42,14 @@
     var autoAddAmount = 0
     var clickAddAmount = 1
     var crackingAmount = 0
+    var numberOfUpdates = 0
+    var numberOfAutoClick = 0
     var priceUpgrade = 30
     var priceAutoClick = 500
     var priceBoost = 10000
     var loopAutoAdd = window.setInterval(autoAdd, 1000)
     var loopICanBuy = window.setInterval(iCanBuy, 10)
-    var loopSave = window.setInterval(saveAll, 10000)
+    var loopSave = window.setInterval(saveAll, 1000)
 
 // ------------------------------------------------------------
 
@@ -76,17 +78,24 @@ window.onload = function() {
 
     function saveAll() {
         localStorage.setItem('totalNumberOfCookies', JSON.stringify(totalNumberOfCookies))
+        localStorage.setItem('priceUpgrade', JSON.stringify(priceUpgrade))
+        localStorage.setItem('priceAutoClick', JSON.stringify(priceAutoClick))
+        localStorage.setItem('galleryIndex', JSON.stringify(galleryIndex))
     }
 
     function load() {
         totalNumberOfCookies = parseInt(localStorage.getItem('totalNumberOfCookies'))
+        priceUpgrade = parseInt(localStorage.getItem('priceUpgrade'))
+        priceAutoClick = parseInt(localStorage.getItem('priceAutoClick'))
+        galleryIndex = parseInt(localStorage.getItem('galleryIndex'))
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
+        document.getElementById('price-up').innerHTML = `${priceUpgrade}`
+        document.getElementById('price-auto').innerHTML = `${priceAutoClick}`
+        document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])
+        
     }
 
-//
-    document.getElementById("cookie").addEventListener("click", () => {
-        totalNumberOfCookies += clickAddAmount
-        crackingAmount++
+    function crackingCookie() {
         if (crackingAmount == breakPointsGallery[galleryIndex]) {
             galleryIndex++
             document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])  
@@ -96,7 +105,13 @@ window.onload = function() {
             crackingAmount = 0
             document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])
         }
-        
+    }
+
+//
+    document.getElementById("cookie").addEventListener("click", () => {
+        totalNumberOfCookies += clickAddAmount
+        crackingAmount++
+        crackingCookie()
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
     })
 // ------------------------------------------------------------
@@ -139,7 +154,7 @@ window.onload = function() {
         if(totalNumberOfCookies >= priceBoost) {
             clickAddAmount *= 2
             totalNumberOfCookies -= priceBoost
-            priceBoost = Math.floor(priceBoost * 2)
+            priceBoost = Math.floor(priceBoost * 1.5)
             document.getElementById('price-boost').innerHTML = `${priceBoost}`
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
