@@ -46,8 +46,9 @@
     var clickAddAmountTemp = 0
     var priceUpgrade = 30
     var priceAutoClick = 500
-    var priceBoost = 10
+    var priceBoost = 10000
     var timerBoost = 30
+    var inBoost = false
     var loopAutoAdd = window.setInterval(autoAdd, 1000)
     var loopICanBuy = window.setInterval(iCanBuy, 10)
     var loopSave = window.setInterval(saveAll, 1000)
@@ -66,6 +67,7 @@ window.onload = function() {
 //
     function autoAdd() {
         totalNumberOfCookies += autoAddAmount
+        console.log(`autoAdd: ${autoAddAmount}`)
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         document.title = `${totalNumberOfCookies} Cookies`
     }
@@ -79,6 +81,7 @@ window.onload = function() {
 
     function saveAll() {
         localStorage.setItem('totalNumberOfCookies', JSON.stringify(totalNumberOfCookies))
+        localStorage.setItem('autoAddAmount', JSON.stringify(autoAddAmount))
         localStorage.setItem('priceUpgrade', JSON.stringify(priceUpgrade))
         localStorage.setItem('priceAutoClick', JSON.stringify(priceAutoClick))
         localStorage.setItem('galleryIndex', JSON.stringify(galleryIndex))
@@ -88,12 +91,13 @@ window.onload = function() {
         totalNumberOfCookies = parseInt(localStorage.getItem('totalNumberOfCookies'))
         priceUpgrade = parseInt(localStorage.getItem('priceUpgrade'))
         priceAutoClick = parseInt(localStorage.getItem('priceAutoClick'))
+        autoAddAmount = parseInt(localStorage.getItem('autoAddAmount'))
         galleryIndex = parseInt(localStorage.getItem('galleryIndex'))
         document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         document.getElementById('price-up').innerHTML = `${priceUpgrade}`
         document.getElementById('price-auto').innerHTML = `${priceAutoClick}`
         document.getElementById('pictureCookie').setAttribute('src', galleryCookies[galleryIndex])
-        
+        document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
     }
 
     function crackingCookie() {
@@ -127,6 +131,7 @@ window.onload = function() {
 
     function addingBoost(temp) {
         if (temp == true) {
+            inBoost = true
             clickAddAmount *= 2
             autoAddAmount *= 2
             temp = false
@@ -135,6 +140,8 @@ window.onload = function() {
         else {
             clickAddAmount = clickAddAmountTemp
             autoAddAmount = autoAddAmountTemp
+            document.getElementById('upgradeLevel').innerHTML = `${autoAddAmount} CpS`
+            inBoost = false
         }
     }
 
@@ -168,7 +175,13 @@ window.onload = function() {
 
     document.getElementById("buy-btn").addEventListener("click", () => {
         if(totalNumberOfCookies >= priceAutoClick) {
-            autoAddAmount++
+            if (inBoost == true)  {
+                autoAddAmountTemp++
+                autoAddAmount += 2
+            }
+            else
+                autoAddAmount++
+            // autoAddAmount++
             totalNumberOfCookies -= priceAutoClick
             priceAutoClick = Math.floor(priceAutoClick * 1.6)
             document.getElementById('price-auto').innerHTML = `${priceAutoClick}`
@@ -189,10 +202,5 @@ window.onload = function() {
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
     })
-
-    
-
-
-
 })();
 // ------------------------------------------------------------
