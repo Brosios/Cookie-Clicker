@@ -42,11 +42,12 @@
     var autoAddAmount = 0
     var clickAddAmount = 1
     var crackingAmount = 0
-    var numberOfUpdates = 0
-    var numberOfAutoClick = 0
+    var autoAddAmountTemp = 0
+    var clickAddAmountTemp = 0
     var priceUpgrade = 30
     var priceAutoClick = 500
-    var priceBoost = 10000
+    var priceBoost = 10
+    var timerBoost = 30
     var loopAutoAdd = window.setInterval(autoAdd, 1000)
     var loopICanBuy = window.setInterval(iCanBuy, 10)
     var loopSave = window.setInterval(saveAll, 1000)
@@ -107,6 +108,36 @@ window.onload = function() {
         }
     }
 
+    function timer(temp) {
+        if (temp == true) {
+            timerBoost++
+            temp = false
+        }
+        if (timerBoost > 0) {
+            timerBoost--
+            document.getElementById('time-boost').style.color = 'cyan'
+            setTimeout(timer, 1000)
+        }
+        else {
+            timerBoost = 30
+            document.getElementById('time-boost').style.color = '#d1953f'
+        } 
+        document.getElementById('time-boost').innerHTML = timerBoost  
+    }
+
+    function addingBoost(temp) {
+        if (temp == true) {
+            clickAddAmount *= 2
+            autoAddAmount *= 2
+            temp = false
+            setTimeout(addingBoost, 30000)
+        }
+        else {
+            clickAddAmount = clickAddAmountTemp
+            autoAddAmount = autoAddAmountTemp
+        }
+    }
+
 //
     document.getElementById("cookie").addEventListener("click", () => {
         totalNumberOfCookies += clickAddAmount
@@ -135,10 +166,6 @@ window.onload = function() {
         }
     })
 
-    document.getElementById('up-btn').onmouseup = function () {
-
-    }
-
     document.getElementById("buy-btn").addEventListener("click", () => {
         if(totalNumberOfCookies >= priceAutoClick) {
             autoAddAmount++
@@ -152,13 +179,18 @@ window.onload = function() {
 
     document.getElementById("buy1btn").addEventListener("click", () => {
         if(totalNumberOfCookies >= priceBoost) {
-            clickAddAmount *= 2
+            clickAddAmountTemp = clickAddAmount
+            autoAddAmountTemp = autoAddAmount
+            timer(true)
+            addingBoost(true)
             totalNumberOfCookies -= priceBoost
             priceBoost = Math.floor(priceBoost * 1.5)
             document.getElementById('price-boost').innerHTML = `${priceBoost}`
             document.getElementById('numbers').innerHTML = `${totalNumberOfCookies} Cookies`
         }
     })
+
+    
 
 
 
