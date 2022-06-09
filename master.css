@@ -1,77 +1,101 @@
 /* /////////////////////////Cookie Clicker/////////////////////////////////// */
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: 'Kdam Thmor Pro', sans-serif;
 }
 /* //////////////////////////////////////////////////////////// */
 body {
     user-select: none;
-    padding-top: 30px;
+    text-align: center;
+    color: #d1953f;
+    height: 525px;
     background: url(./img/cookie.jpg);
     background-color: black;
     background-blend-mode: luminosity;
-    width: 500px;
-    height: 300px;
-    margin-left: 348px;
-    text-align: center;
-    color: #d1953f;
-    font-family: 'Zen Loop', cursive;
+    background-repeat: repeat;
 }                                           
 /* //////////////////////////////////////////////////////////// */
-p {
+.container .box-container {
+    display: grid;
+    grid-gap: 10px;
+    justify-items: center;
+}
+/* //////////////////////////////////////////////////////////// */
+.container .box-container .box {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    position: relative;
+    top: 50px;
+    height: 365px;
+    width: 350px;
+}
+/* //////////////////////////////////////////////////////////// */
+.container .box-container .box img {
+    width: 200px;
+    cursor: pointer;
+    position: relative;
+    bottom: 25px;
+    left: 5px;
+}
+/* //////////////////////////////////////////////////////////// */
+.container .box-container .box p {
     font-size: 20px;
-    display: block;
+    line-height: 1.8;
     margin: 5px;
 }
 /* //////////////////////////////////////////////////////////// */
-img {
-    filter: drop-shadow(black 5px 3px 20px);
-    border-radius: 120px;
+.container .box-container .box .btn1 {
+    display: inline-block;
+    background: #ec0000;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
     cursor: pointer;
+    float: right;
     position: relative;
-    right: 38px;
-    top: 140px;
-    user-select: none;
-    width: 232px;
+    top: 160px;
+    left: 8px;
 }
 /* //////////////////////////////////////////////////////////// */
-.levelup{
+.container .box-container .box .btn2 {
+    display: inline-block;
+    background: #ec0000;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
     cursor: pointer;
-    display: block;
+    float: left;
     position: relative;
-    left: 81px;
-    top: -46px;
-    width: 60px;
-    margin: auto;
-    opacity: 0.8;
+    bottom: 34px;
+    right: 13px;
 }
 /* //////////////////////////////////////////////////////////// */
-#optionone {
-    position: relative;
-    bottom: 20px;
-    left: 285px;
-    color: white;
-    background-color: #ec0000;
-    border-radius: 10px;
-    padding: 0px;
-    width: 200px;
-    height: 91px;
-    cursor: pointer;
-}
-/* //////////////////////////////////////////////////////////// */
-#optionone:hover {
-    background-color: #0a0a0a98;
+.container .box-container .box .btn1:hover {
+    background: #0a0a0a98;
     transition: 3s;
 }
 /* //////////////////////////////////////////////////////////// */
-table {
-    position: relative;
-    bottom: 375px;
-    right: 395px;
+.container .box-container .box .btn2:hover {
+    background: #0a0a0a98;
+    transition: 3s;
+}
+/* //////////////////////////////////////////////////////////// */
+.container .box-container .box .cookie {
+    width: 70%;
     margin: auto;
-    width: 264px;
-    font-size: 25px;
+}
+/* //////////////////////////////////////////////////////////// */
+table {
+    width: 363px;
+    font-size: 15px;
+    position: relative;
+    top: 44px;
 }
 /* //////////////////////////////////////////////////////////// */
 td {
@@ -79,43 +103,25 @@ td {
     border-radius: 10px;
 }
 /* //////////////////////////////////////////////////////////// */
-#numbers {
-    margin: auto;
-    padding-top: 12px;
+.numbers, .upgradeLevel {
+    position: relative;
+    display: flex;
+    top: 5px;
+    right: 13px;
+    width: 271px;
+    height: 70px;
     font-size: 30px;
-    border-radius: 10px;
-    background-color: #1738596b;
-    border: 5px dashed transparent;
-    width: 204px;
-    height: 72px;
-    position: relative;
-    left: 284px;
-    bottom: 260px;
-}
-/* //////////////////////////////////////////////////////////// */
-#upgradeLevel {
-    margin: auto;
-    padding-top: 5px;
-    font-size: 36px;
-    border-radius: 10px;
-    background-color: #1738596b;
-    border: 5px dashed transparent;
-    width: 204px;
-    height: 72px;
-    position: relative;
-    left: 286px;
-    bottom: 10px;
+    border: 2px dotted black;
+    background-color: #0000006b;
+    align-items: center;
+    justify-content: center;
 }
 /* //////////////////////////////////////////////////////////// */
 .cost {
     border-radius: 26px;
     width: 200px;
-    position: relative;
-    bottom: 385px;
-    right: 315px;
     font-size: 20px;
     font-weight: 800;
     background-color: #4875056e;
 }
-
 /* //////////////////////////////////////////////////////////// */
