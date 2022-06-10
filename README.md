@@ -1,7 +1,7 @@
 # Cookie-Clicker
 <h1>Project</h1>
 <ul>
-<li>Cookie Clicker game: https://memouan.github.io/Cookie-Clicker/</li>
+<li>Cookie Clicker game:  https://brosios.github.io/Cookie-Clicker/</li>
 </ul>
 <h1>members</h1>
 <ul>
