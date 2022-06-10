@@ -1,10 +1,14 @@
 # Cookie-Clicker
+<h1>Project</h1>
+<ul>
+<li>Cookie Clicker game: https://memouan.github.io/Cookie-Clicker/</li>
+</ul>
 <h1>members</h1>
 <ul>
-  <li>Asma Righi</li>
-  <li>Arthur Pluym</li>
-  <li>Omar Maad</li>
-  <li>Mehdi Ouannassi</li>
+  <li>Asma Righi: https://github.com/asmarighi</li>
+  <li>Arthur Pluym: https://github.com/TheNewArthur</li>
+  <li>Omar Maad: https://github.com/Brosios</li>
+  <li>Mehdi Ouannassi: https://github.com/memouan</li>
 <h1>Broswer Game</h1>
 <h2>Step 1: base structure</h2>
 
